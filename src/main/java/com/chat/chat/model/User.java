@@ -23,8 +23,8 @@ public class User {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "message_id")
+    private Message message;
     @ManyToOne
     @JoinColumn(name = "chat_id")
     private Chat chat;
