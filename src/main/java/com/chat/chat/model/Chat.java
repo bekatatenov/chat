@@ -20,8 +20,6 @@ public class Chat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String session;
-
     private String nameOfChat;
 
     @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL)

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Builder
@@ -28,4 +30,10 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "chat_id")
     private Chat chat;
+
+    @Builder.Default
+    private boolean enabled = true;
+
+    @Builder.Default
+    private String role = "USER";
 }

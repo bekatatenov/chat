@@ -24,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.formLogin()
                 .loginPage("/login")
                 .failureUrl("/login?error=true");
@@ -35,10 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true);
 
         http.authorizeRequests()
-                .antMatchers("/profile", "/chat")
-                .authenticated();
-
-        http.authorizeRequests()
                 .anyRequest()
                 .permitAll();
     }
@@ -46,11 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         String fetchUsersQuery = "select email, password, enabled"
-                + " from chat.users"
+                + " from users"
                 + " where email = ?";
 
         String fetchRolesQuery = "select email, role"
-                + " from chat.users"
+                + " from users"
                 + " where email = ?";
 
         auth.jdbcAuthentication()
